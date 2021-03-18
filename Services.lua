@@ -8,5 +8,6 @@ return function()
 	SX.RFirst = game:GetService('ReplicatedFirst')
 	SX.SContext = game:GetService('ScriptContext')
 	SX.Workspace = game:GetService('Workspace')
+	SX.Groups = game:GetService('GroupService')
 	return SX
 end
