@@ -210,6 +210,7 @@ return function()
 	SearchBox.Text = ""
 	SearchBox.TextColor3 = Color3.fromRGB(255, 255, 255)
 	SearchBox.TextSize = 16.000
+	SearchBox.ClearTextOnFocus = false
 
 	Play.Name = "Play"
 	Play.Parent = Frame_3
@@ -237,6 +238,7 @@ return function()
 	AudioInput.TextColor3 = Color3.fromRGB(255, 255, 255)
 	AudioInput.TextSize = 18.000
 	AudioInput.TextWrapped = true
+	AudioInput.ClearTextOnFocus = false
 
 	VisualizerFrame.Name = "VisualizerFrame"
 	VisualizerFrame.Parent = UI

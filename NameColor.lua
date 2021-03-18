@@ -1,14 +1,14 @@
 return function()
 	local NAME_COLORS =
 		{
-			Color3.new(253/255, 41/255, 67/255), -- BrickColor.new("Bright red").Color,
-			Color3.new(1/255, 162/255, 255/255), -- BrickColor.new("Bright blue").Color,
-			Color3.new(2/255, 184/255, 87/255), -- BrickColor.new("Earth green").Color,
-			BrickColor.new("Bright violet").Color,
-			BrickColor.new("Bright orange").Color,
-			BrickColor.new("Bright yellow").Color,
-			BrickColor.new("Light reddish violet").Color,
-			BrickColor.new("Brick yellow").Color,
+			'FD2943', -- BrickColor.new("Bright red").Color,
+			'01A2FF', -- BrickColor.new("Bright blue").Color,
+			'02B857', -- BrickColor.new("Earth green").Color,
+			'6B327C', -- BrickColor.new("Bright violet").Color
+			'DA8541', -- BrickColor.new("Bright orange").Color
+			'F5CD30', -- BrickColor.new("Bright yellow").Color
+			'E8BAC8', -- BrickColor.new("Light reddish violet").Color
+			'D7C59A', -- BrickColor.new("Brick yellow").Color
 		}
 
 	local function GetNameValue(pName)
