@@ -25,8 +25,8 @@ return function(PlayerGui)
 	
 	local StartLayoutOrder = 0
 	for _,v in pairs(IconFrame:GetChildren()) do
-		if v:IsA('Frame') or v:IsA('TextButton') and v.LayoutOrder then
-			StartLayoutOrder = StartLayoutOrder + 1
+		if (v:IsA('Frame') or v:IsA('TextButton')) and v.LayoutOrder and v.LayoutOrder >= StartLayoutOrder then
+			StartLayoutOrder = v.LayoutOrder + 1
 		end
 	end
 
@@ -60,7 +60,7 @@ return function(PlayerGui)
 		StateOverlay.ScaleType = 'Slice'
 		StateOverlay.SliceCenter = Rect.new(8, 8, 8, 8)
 		
-		IconFrame.LayoutOrder = StartLayoutOrder + 1
+		IconFrame.LayoutOrder = StartLayoutOrder
 		StartLayoutOrder = StartLayoutOrder + 1
 		
 		IconButton.MouseEnter:connect(function()
