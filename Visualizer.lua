@@ -150,8 +150,10 @@ return function() -- boatbomber/AudioVisualizer
 			
 			Visualizer.Sound = Sound
 			
-			HandlePlaying()
-			Visualizer.PlayingConnection = Sound:GetPropertyChangedSignal("Playing"):Connect(HandlePlaying)
+			if Sound then
+				HandlePlaying()
+				Visualizer.PlayingConnection = Sound:GetPropertyChangedSignal("Playing"):Connect(HandlePlaying)
+			end
 		end
 		
 		function Visualizer:UnlinkFromSound()
