@@ -40,6 +40,39 @@ return function(PlayerGui)
 		IconImage.Position = UDim2.new(0.5, 0, 0.5, 0)
 		IconImage.Size = UDim2.new(0, 24, 0, 24)
 		IconImage.Image = Image
+		IconImage.Name = 'Icon'
+		local StateOverlay = Instance.new('ImageLabel', IconButton)
+		StateOverlay.BackgroundTransparency = 1
+		StateOverlay.Size = UDim2.new(1, 0, 1, 0)
+		StateOverlay.ZIndex = 2
+		StateOverlay.Image = 'rbxasset://LuaPackages/Packages/_Index/UIBlox/UIBlox/App/ImageSet/ImageAtlas/img_set_1x_2.png'
+		StateOverlay.ImageTransparency = 1
+		StateOverlay.ImageRectOffset = Vector2.new(490, 22)
+		StateOverlay.ImageRectSize = Vector2.new(17, 17)
+		StateOverlay.Name = 'StateOverlay'
+		StateOverlay.ScaleType = 'Slice'
+		StateOverlay.SliceCenter = Rect.new(8, 8, 8, 8)
+		
+		IconButton.MouseEnter:connect(function()
+			StateOverlay.ImageTransparency = .9
+			StateOverlay.ImageColor3 = Color3.new(1, 1, 1)
+		end)
+		
+		IconButton.MouseLeave:connect(function()
+			StateOverlay.ImageTransparency = 1
+			StateOverlay.ImageColor3 = Color3.new(1, 1, 1)
+		end)
+		
+		IconButton.MouseButton1Down:connect(function()
+			StateOverlay.ImageTransparency = .7
+			StateOverlay.ImageColor3 = Color3.new(0, 0, 0)
+		end)
+		
+		IconButton.MouseButton1Up:connect(function()
+			StateOverlay.ImageTransparency = 1
+			StateOverlay.ImageColor3 = Color3.new(1, 1, 1)
+		end)
+		
 		return IconButton
 	end
 
