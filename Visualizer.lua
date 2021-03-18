@@ -27,7 +27,7 @@ return function() -- boatbomber/AudioVisualizer
 
 		-- Determine settings
 		local BAR_COUNT = math.clamp(typeof(BarCount) == "number" and BarCount or 41, 11,601)
-		local SAMPLE_HZ = math.clamp(BAR_COUNT/2,10,500)
+		local SAMPLE_HZ = math.clamp(BAR_COUNT/4,20,800)
 
 		if BAR_COUNT%2==0 then
 			BAR_COUNT += 1
