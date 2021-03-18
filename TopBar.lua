@@ -83,7 +83,7 @@ return function(PlayerGui)
 			StateOverlay.ImageColor3 = Color3.new(1, 1, 1)
 		end)
 		
-		return IconButton
+		return {IconFrame, IconButton, IconImage}
 	end
 
 	return CreateIcon
