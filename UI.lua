@@ -1,5 +1,6 @@
 return function()
 
+
 	local UI = Instance.new("ScreenGui")
 	local ChatFrame = Instance.new("Frame")
 	local Scroller = Instance.new("ScrollingFrame")
@@ -28,6 +29,7 @@ return function()
 	local TextLabel_4 = Instance.new("TextLabel")
 	local CloseMenuButton_3 = Instance.new("ImageButton")
 	local Frame_5 = Instance.new("Frame")
+	local Visualizer = Instance.new("Frame")
 
 	--Properties:
 
@@ -242,8 +244,8 @@ return function()
 	VisualizerFrame.BackgroundTransparency = 0.600
 	VisualizerFrame.BorderColor3 = Color3.fromRGB(27, 42, 53)
 	VisualizerFrame.BorderSizePixel = 0
-	VisualizerFrame.Position = UDim2.new(1, -218, 1, -218)
-	VisualizerFrame.Size = UDim2.new(0, 202, 0, 202)
+	VisualizerFrame.Position = UDim2.new(1, -218, 1, -130)
+	VisualizerFrame.Size = UDim2.new(0, 202, 0, 114)
 
 	Header_3.Name = "Header"
 	Header_3.Parent = VisualizerFrame
@@ -288,6 +290,14 @@ return function()
 	Frame_5.BackgroundTransparency = 1.000
 	Frame_5.Position = UDim2.new(0, 0, 0, 31)
 	Frame_5.Size = UDim2.new(1, 0, 1, -34)
+
+	Visualizer.Name = "Visualizer"
+	Visualizer.Parent = Frame_5
+	Visualizer.AnchorPoint = Vector2.new(0.5, 0.5)
+	Visualizer.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+	Visualizer.BackgroundTransparency = 1.000
+	Visualizer.Position = UDim2.new(0.5, 0, 0.5, 0)
+	Visualizer.Size = UDim2.new(0.899999976, 0, 0, 70)
 	
 	return UI
 end
