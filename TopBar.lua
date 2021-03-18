@@ -22,6 +22,13 @@ return function(PlayerGui)
 	else
 		IconFrame = CoreGui:WaitForChild('TopBar'):WaitForChild('TopBarFrame'):WaitForChild('LeftFrame')
 	end
+	
+	local StartLayoutOrder = 0
+	for _,v in pairs(IconFrame:GetChildren()) do
+		if v:IsA('Frame') or v:IsA('TextButton') and v.LayoutOrder then
+			StartLayoutOrder = StartLayoutOrder + 1
+		end
+	end
 
 	local CreateIcon = function(Name, Image)
 		local IconFrame = Instance.new('Frame', IconFrame)
@@ -52,6 +59,9 @@ return function(PlayerGui)
 		StateOverlay.Name = 'StateOverlay'
 		StateOverlay.ScaleType = 'Slice'
 		StateOverlay.SliceCenter = Rect.new(8, 8, 8, 8)
+		
+		IconFrame.LayoutOrder = StartLayoutOrder + 1
+		StartLayoutOrder = StartLayoutOrder + 1
 		
 		IconButton.MouseEnter:connect(function()
 			StateOverlay.ImageTransparency = .9
