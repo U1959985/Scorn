@@ -27,7 +27,7 @@ return function() -- boatbomber/AudioVisualizer
 
 		-- Determine settings
 		local BAR_COUNT = math.clamp(typeof(BarCount) == "number" and BarCount or 41, 11,601)
-		local SAMPLE_HZ = math.clamp(BAR_COUNT/4,20,800)
+		local SAMPLE_HZ = math.clamp(BAR_COUNT/1,50,250)
 
 		if BAR_COUNT%2==0 then
 			BAR_COUNT += 1
@@ -42,11 +42,11 @@ return function() -- boatbomber/AudioVisualizer
 			BAR_TO_BUFFER[i] = math.abs(BUFFER_COUNT- (i+ (i<=BUFFER_COUNT and -1 or 1) ))
 			BAR_TO_MULTIPLIER[i] = 1-(math.clamp(math.abs(BUFFER_COUNT- (i+ (i<=BUFFER_COUNT and -1 or 1) ))/BUFFER_COUNT, 0.01,1)^2)
 		end
-		
+
 		local UPDATE_WAIT = 1/SAMPLE_HZ
-		
+
 		-- Setup visualizer
-		
+
 		local Visualizer = {
 			Frame = Frame;
 			VolumeBuffer = table.create(BUFFER_COUNT+1);
@@ -55,7 +55,7 @@ return function() -- boatbomber/AudioVisualizer
 			PlayingConnection = nil;
 			Sound = nil;
 		}
-		
+
 		-- Create the bar guis
 		for i=1, BAR_COUNT do
 			local Bar = Instance.new("Frame")
@@ -64,18 +64,18 @@ return function() -- boatbomber/AudioVisualizer
 			Bar.AnchorPoint = Vector2.new(0,0.5)
 			Bar.Size = UDim2.new(BAR_SIZE,0,0.02,0)
 			Bar.Position = UDim2.new(BAR_SIZE* (i-1), 0,0.5,0)
-			
+
 			Visualizer.Bars[i] = Bar
-			
+
 			Bar.Parent = Frame
 		end
-		
+
 		local function HandlePlaying()
 			if Visualizer.BufferConnection then
 				Visualizer.BufferConnection:Disconnect()
 				Visualizer.BufferConnection = nil
 			end
-		
+
 			local Sound = Visualizer.Sound
 			if not Sound then return end
 
@@ -103,14 +103,14 @@ return function() -- boatbomber/AudioVisualizer
 
 						local Color = Visualizer.Color
 						local ColorType = typeof(Color)
-						
+
 						for i,Bar in ipairs(Visualizer.Bars) do
-							
+
 							local Alpha = math.clamp(
 								((Visualizer.VolumeBuffer[BAR_TO_BUFFER[i]] or 0)/400),
 								0.02, 1
 							)
-							
+
 							Bar:TweenSize(
 								UDim2.new(
 									BAR_SIZE,0,
@@ -118,7 +118,7 @@ return function() -- boatbomber/AudioVisualizer
 								),
 								Enum.EasingDirection.Out, Enum.EasingStyle.Linear, UPDATE_WAIT, true
 							)
-							
+
 							if Color then
 								if ColorType == "Color3" then
 									Bar.BackgroundColor3 = Color
@@ -126,7 +126,7 @@ return function() -- boatbomber/AudioVisualizer
 									Bar.BackgroundColor3 = AlphaColorSequence(Color, Alpha)
 								end
 							end
-							
+
 						end
 					end
 
@@ -141,21 +141,21 @@ return function() -- boatbomber/AudioVisualizer
 				end
 			end
 		end
-		
+
 		function Visualizer:LinkToSound(Sound)
-			
+
 			Visualizer:UnlinkFromSound()
-		
+
 			table.clear(Visualizer.VolumeBuffer)
-			
+
 			Visualizer.Sound = Sound
-			
+
 			if Sound then
 				HandlePlaying()
 				Visualizer.PlayingConnection = Sound:GetPropertyChangedSignal("Playing"):Connect(HandlePlaying)
 			end
 		end
-		
+
 		function Visualizer:UnlinkFromSound()
 
 			if Visualizer.PlayingConnection then
@@ -168,7 +168,7 @@ return function() -- boatbomber/AudioVisualizer
 			end
 
 			Visualizer.Sound = nil
-			
+
 			for i,Bar in ipairs(Visualizer.Bars) do
 				Bar:TweenSize(
 					UDim2.new(BAR_SIZE,0,0.02,0),
@@ -177,7 +177,7 @@ return function() -- boatbomber/AudioVisualizer
 			end
 
 		end
-		
+
 		function Visualizer:Destroy()
 			if Visualizer.PlayingConnection then
 				Visualizer.PlayingConnection:Disconnect()
@@ -192,8 +192,8 @@ return function() -- boatbomber/AudioVisualizer
 			end
 			table.clear(Visualizer.VolumeBuffer)
 		end
-		
-		
+
+
 		return Visualizer
 	end
 
