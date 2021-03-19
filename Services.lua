@@ -9,5 +9,6 @@ return function()
 	SX.SContext = game:GetService('ScriptContext')
 	SX.Workspace = game:GetService('Workspace')
 	SX.Groups = game:GetService('GroupService')
+	SX.Prompts = game:GetService('ProximityPromptService')
 	return SX
 end
