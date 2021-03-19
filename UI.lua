@@ -246,7 +246,7 @@ return function()
 	VisualizerFrame.BackgroundTransparency = 0.600
 	VisualizerFrame.BorderColor3 = Color3.fromRGB(27, 42, 53)
 	VisualizerFrame.BorderSizePixel = 0
-	VisualizerFrame.Position = UDim2.new(1, -218, 1, -130)
+	VisualizerFrame.Position = UDim2.new(0, 16, 1, -130)
 	VisualizerFrame.Size = UDim2.new(0, 202, 0, 114)
 
 	Header_3.Name = "Header"
