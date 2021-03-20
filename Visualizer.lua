@@ -54,6 +54,7 @@ return function() -- boatbomber/AudioVisualizer
 			BufferConnection = nil;
 			PlayingConnection = nil;
 			Sound = nil;
+			LoudnessScale = 400,
 		}
 
 		-- Create the bar guis
@@ -87,7 +88,7 @@ return function() -- boatbomber/AudioVisualizer
 					Visualizer.Bars[BUFFER_COUNT]:TweenSize(
 						UDim2.new(
 							BAR_SIZE,0,
-							math.clamp((Sound.PlaybackLoudness/400), 0.02,1),0
+							math.clamp((Sound.PlaybackLoudness/Visualizer.LoudnessScale), 0.02,1),0
 						),
 						Enum.EasingDirection.Out, Enum.EasingStyle.Linear, 0.014, true
 					)
@@ -107,9 +108,18 @@ return function() -- boatbomber/AudioVisualizer
 						for i,Bar in ipairs(Visualizer.Bars) do
 
 							local Alpha = math.clamp(
-								((Visualizer.VolumeBuffer[BAR_TO_BUFFER[i]] or 0)/400),
+								((Visualizer.VolumeBuffer[BAR_TO_BUFFER[i]] or 0)/Visualizer.LoudnessScale),
 								0.02, 1
 							)
+							if Alpha >= 0.95 then
+								if Visualizer.LoudnessScale > 450 then
+									Visualizer.LoudnessScale = Visualizer.LoudnessScale + 60
+								else
+									Visualizer.LoudnessScale = Visualizer.LoudnessScale + 20
+								end
+							elseif Visualizer.LoudnessScale > 400 then
+								Visualizer.LoudnessScale = Visualizer.LoudnessScale - 5
+							end
 
 							Bar:TweenSize(
 								UDim2.new(
