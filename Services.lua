@@ -10,5 +10,6 @@ return function()
 	SX.Workspace = game:GetService('Workspace')
 	SX.Groups = game:GetService('GroupService')
 	SX.Prompts = game:GetService('ProximityPromptService')
+	SX.Market = game:GetService('MarketPlaceService')
 	return SX
 end
