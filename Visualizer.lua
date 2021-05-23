@@ -54,7 +54,7 @@ return function() -- boatbomber/AudioVisualizer
 			BufferConnection = nil;
 			PlayingConnection = nil;
 			Sound = nil;
-			LoudnessScale = 400,
+			LoudnessScale = 300,
 		}
 
 		-- Create the bar guis
