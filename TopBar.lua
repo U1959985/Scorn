@@ -2,6 +2,9 @@ return function(PlayerGui)
 	local CoreGui = game:GetService('CoreGui')
 	local _, e = pcall(function() print(#CoreGui:GetChildren()) end)
 
+	if PlayerGui:findFirstChild('TopbarPlus') then
+		e = true
+	end
 	local IconFrame = nil
 	if e then
 		local SG = Instance.new('ScreenGui', PlayerGui)
