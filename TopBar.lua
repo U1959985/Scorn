@@ -13,7 +13,7 @@ return function(PlayerGui)
 
 		local F = Instance.new('Frame', SG)
 		F.Size = UDim2.new(0, 0.3, 0, 36)
-		F.Position = UDim2.new(0, 40, 1, -36)
+		F.Position = UDim2.new(0, 10, 1, -46)
 		F.Transparency = 1
 		local Layout = Instance.new('UIListLayout', F)
 		Layout.Padding = UDim.new(0, 12)
