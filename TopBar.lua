@@ -6,7 +6,8 @@ return function(PlayerGui)
 		e = true
 	end
 	local IconFrame = nil
-	if e then
+	local TopBar = CoreGui:FindFirstChild('TopBar')
+	if e or not TopBar then
 		local SG = Instance.new('ScreenGui', PlayerGui)
 		SG.Name = '__ICONS'
 		SG.ResetOnSpawn = false
